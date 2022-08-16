@@ -17,7 +17,6 @@ dex:
   # -- Helm values
   # @default -- [upstream values](https://github.com/dexidp/helm-charts/tree/master/charts/dex/values.yaml)
   values: {}
-
 # -- [dex-k8s-authenticator](https://github.com/mintel/dex-k8s-authenticator) ([example](./examples/dex-k8s-authenticator.yaml))
 # @default -- -
 dexK8sAuthenticator:
@@ -45,7 +44,6 @@ dexK8sAuthenticator:
   # -- Helm values
   # @default -- [upstream values](https://github.com/mintel/dex-k8s-authenticator/tree/master/charts/dex-k8s-authenticator/values.yaml)
   values: {}
-
 # -- [gangway](https://github.com/heptiolabs/gangway/) is DEPRECATED, use dexK8sAuthenticator instead
 # @default -- DEPRECATED
 gangway:
@@ -65,7 +63,6 @@ gangway:
   # -- Helm values
   # @default -- [upstream values](https://github.com/gabibbo97/charts/tree/master/charts/gangway/values.yaml)
   values: {}
-
 # -- [vault](https://github.com/hashicorp/vault/) ([example](./examples/vault.yaml))
 # @default -- -
 vault:
@@ -81,11 +78,10 @@ vault:
   # -- Chart
   chart: "vault"
   # -- [vault Helm chart](https://github.com/hashicorp/vault-helm) version
-  targetRevision: "0.20.1"
+  targetRevision: "0.21.0"
   # -- Helm values
   # @default -- [upstream values](https://github.com/hashicorp/vault-helm/tree/master/values.yaml)
   values: {}
-
 # -- [falco](https://github.com/falcosecurity/falco/) ([example](./examples/falco.yaml))
 # @default -- -
 falco:
@@ -105,7 +101,6 @@ falco:
   # -- Helm values
   # @default -- [upstream values](https://github.com/falcosecurity/charts/blob/master/falco/values.yaml)
   values: {}
-
 # -- [falco-exporter](https://github.com/falcosecurity/falco-exporter/) ([example](./examples/falco-exporter.yaml))
 # @default -- -
 falcoExporter:
@@ -125,7 +120,6 @@ falcoExporter:
   # -- Helm values
   # @default -- [upstream values](https://github.com/falcosecurity/charts/blob/master/falco-exporter/values.yaml)
   values: {}
-
 # -- [gatekeeper](https://github.com/open-policy-agent/gatekeeper) ([example](./examples/gatekeeper.yaml))
 # @default -- -
 gatekeeper:
@@ -145,7 +139,6 @@ gatekeeper:
   # -- Helm values
   # @default -- [upstream values](https://github.com/open-policy-agent/gatekeeper/blob/master/charts/gatekeeper/values.yaml)
   values: {}
-
 # -- [vault-monitoring](https://github.com/adfinis/helm-charts/tree/main/charts/vault-monitoring) ([example](./examples/vault-monitoring.yaml))
 # @default -- -
 vaultMonitoring:
@@ -165,7 +158,6 @@ vaultMonitoring:
   # -- Helm values
   # @default -- [upstream values](https://github.com/adfinis/helm-charts/blob/main/charts/vault-monitoring/values.yaml)
   values: {}
-
 # -- [secrets-store-csi-driver](https://github.com/kubernetes-sigs/secrets-store-csi-driver) ([example](./examples/secrets-store-csi-driver.yaml))
 # @default -- -
 secretsStoreCsiDriver:
@@ -185,7 +177,6 @@ secretsStoreCsiDriver:
   # -- Helm values
   # @default -- [upstream values](https://github.com/kubernetes-sigs/secrets-store-csi-driver/blob/main/charts/secrets-store-csi-driver/values.yaml)
   values: {}
-
 # -- [NeuVector](https://github.com/neuvector/neuvector) ([example](./example/neuvector.yaml))
 # @default -- -
 neuvector:
@@ -205,7 +196,6 @@ neuvector:
   # -- Helm values
   # @default -- [upstream values](https://github.com/neuvector/neuvector-helm/blob/master/charts/core/values.yaml)
   values: {}
-
 # -- [NeuVector monitor](https://github.com/neuvector/neuvector-helm/tree/master/charts/monitor) ([example](./example/neuvector.yaml))
 # @default -- -
 neuvectorMonitor:
@@ -225,7 +215,6 @@ neuvectorMonitor:
   # -- Helm values
   # @default -- [upstream values](https://github.com/neuvector/neuvector-helm/blob/master/charts/monitor/values.yaml)
   values: {}
-
 # -- [StackRox central-services](https://www.stackrox.io/) ([example/stackrox.yaml))
 # @default -- -
 stackroxCentralServices:
@@ -245,7 +234,6 @@ stackroxCentralServices:
   # -- Helm values
   # @default -- [upstream values](https://github.com/stackrox/stackrox/blob/master/image/templates/helm/stackrox-central/values.yaml)
   values: {}
-
 # -- [StackRox secured-cluster-services](https://www.stackrox.io/) ([example/stackrox.yaml))
 # @default -- -
 stackroxSecuredClusterServices:
