@@ -1,2 +1,3 @@
 .tmp/
 charts/*/charts
+charts/security-apps/charts/argoconfig-0.7.6.tgz
