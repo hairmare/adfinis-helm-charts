@@ -1,7 +1,15 @@
 argoconfig:
+  # -- Choose between `applicationSet` and `application` to influence what get's rendered.
+  # If you use `applicationSet` you also need to configure `argoconfig.generators` or individual
+  # generators for apps.
+  mode: "application"
   application:
     # -- Optional annotations to add to all Applications metadata.
     annotations: {}
+  applicationSet:
+    # -- Generators to use for ApplicationSets.
+    # These get merged with the generator from individual components to generate the final generators.
+    generators: []
 
 # -- [Argo CD Notifications](https://argocd-notifications.readthedocs.io/en/stable/) is DEPRECATED, use Argo CD directly instead.
 # @default -- DEPRECATED
@@ -37,3 +45,7 @@ argoRollouts:
   # -- Helm values
   # @default -- [upstream values](https://github.com/argoproj/argo-helm/blob/master/charts/argo-rollouts/values.yaml)
   values: {}
+  # -- Generators to ApplicationSet
+  # If `argoconfig.mode` is set to `applicationSet` this gets merged with `argoconfig.generators` to generate the
+  # the generators for this application.
+  generators: []

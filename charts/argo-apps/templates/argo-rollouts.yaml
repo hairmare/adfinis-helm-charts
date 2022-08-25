@@ -1,5 +1,9 @@
 {{ if .Values.argoRollouts.enabled }}
+{{ if eq .Values.argoconfig.mode "applicationSet" }}
+{{ template "argoconfig.applicationSet" (list . "argo-apps.argoRollouts") }}
+{{ else }}
 {{ template "argoconfig.application" (list . "argo-apps.argoRollouts") }}
+{{ end }}
 {{ end }}
 
 {{- define "argo-apps.argoRollouts" -}}{{- $app := unset .Values.argoRollouts "enabled" -}}{{- $name := default $app.namespace $app.name -}}
@@ -10,6 +14,38 @@ metadata:
     {{ toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if eq .Values.argoconfig.mode "applicationSet" }}
+  generators:
+    {{ .Values.argoconfig.applicationSet.generators | toYaml | nindent 4 }}
+  template:
+    metadata:
+      name: {{ template "common.fullname" . }}-{{ $name }}
+      {{- with $app.annotations }}
+      annotations:
+        {{ toYaml . | nindent 4 }}
+      {{- end }}
+    spec:
+      source:
+        repoURL: {{ $app.repoURL | quote }}
+        chart: {{ $app.chart | quote }}
+        targetRevision: {{ $app.targetRevision | quote }}
+        helm:
+          releaseName: {{ $name | quote }}
+          values: |
+            {{ $app.values | toYaml }}
+      {{- if $app.destination }}
+      destination: {{ $app.destination | toJson }}
+      {{- end }}
+      {{- if $app.project }}
+      project: {{ $app.project | quote }}
+      {{- end }}
+      {{- if $app.syncPolicy }}
+      syncPolicy: {{ $app.syncPolicy | toJson }}
+      {{- end }}
+      {{- if $app.ignoreDifferences }}
+      ignoreDifferences: {{ $app.ignoreDifferences | toJson }}
+      {{- end }}
+  {{- else }}
   {{- if $app.project }}
   project: {{ $app.project | quote }}
   {{- end }}
@@ -33,5 +69,6 @@ spec:
   {{- if $app.ignoreDifferences }}
   ignoreDifferences:
     {{ $app.ignoreDifferences | toYaml | nindent 4 }}
+  {{- end }}
   {{- end }}
 {{- end -}}

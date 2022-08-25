@@ -17,7 +17,7 @@ This chart is maintained by [Adfinis](https://adfinis.com/?pk_campaign=github&pk
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.adfinis.com | argoconfig | 0.8.0 |
+| https://charts.adfinis.com | argoconfig | 0.9.0 |
 
 ## Values
 
@@ -28,11 +28,14 @@ This chart is maintained by [Adfinis](https://adfinis.com/?pk_campaign=github&pk
 | argoRollouts.chart | string | `"argo-rollouts"` | Chart |
 | argoRollouts.destination.namespace | string | `"infra-argo-rollouts"` | Namespace |
 | argoRollouts.enabled | bool | `false` | Enable Argo Rollouts |
+| argoRollouts.generators | list | `[]` | Generators to ApplicationSet If `argoconfig.mode` is set to `applicationSet` this gets merged with `argoconfig.generators` to generate the the generators for this application. |
 | argoRollouts.repoURL | string | [repo](https://argoproj.github.io/argo-helm) | Repo URL |
 | argoRollouts.targetRevision | string | `"2.18.*"` | [argo-rollouts Helm chart](https://github.com/argoproj/argo-helm/tree/master/charts/argo-rollouts) version |
 | argoRollouts.values | object | [upstream values](https://github.com/argoproj/argo-helm/blob/master/charts/argo-rollouts/values.yaml) | Helm values |
 | argocdNotifications | object | DEPRECATED | [Argo CD Notifications](https://argocd-notifications.readthedocs.io/en/stable/) is DEPRECATED, use Argo CD directly instead. |
 | argoconfig.application.annotations | object | `{}` | Optional annotations to add to all Applications metadata. |
+| argoconfig.applicationSet.generators | list | `[]` | Generators to use for ApplicationSets. These get merged with the generator from individual components to generate the final generators. |
+| argoconfig.mode | string | `"application"` | Choose between `applicationSet` and `application` to influence what get's rendered. If you use `applicationSet` you also need to configure `argoconfig.generators` or individual generators for apps. |
 
 ## About this chart
 
